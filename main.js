@@ -1,6 +1,7 @@
 nosex=0;
 nosey=0;
-function preload(){   
+function preload(){
+    img=loadImage("https://i.postimg.cc/PxFvYgkv/l1.png")   
 }
 function setup(){
     canvas=createCanvas(300,300);
@@ -15,8 +16,8 @@ function setup(){
 function gotPoses(results){
     if(results.length>0){
         console.log(results);
-        nosex=results[0].pose.nose.x;
-        nosey=results[0].pose.nose.y;
+        nosex=results[0].pose.nose.x-16;
+        nosey=results[0].pose.nose.y+10;
     }
 }
 function modelLoaded(){
@@ -24,6 +25,7 @@ function modelLoaded(){
 }
 function draw(){
     image(video,0,0,300,300);
+    image(img,nosex,nosey,40,30);
 }
 function take_snapshot(){
     save("clownnose.png");
